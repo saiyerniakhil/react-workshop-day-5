@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
-function App() {
+function App(props) {
+
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div style={{backgroundColor: props.color}} className="App">
+      <span>
+        <h1 style={{fontSize: `${props.size}px`}}>Hello, {count} times</h1>
+        <button onClick={() => {
+          setCount(count + 1)
+        }}>
+          Increase the Hello Times
+        </button>
+      </span>
+
+      <span>
+        <button
+          onClick={() => {
+            setCount(count - 1)
+          }}
         >
-          Learn React
-        </a>
-      </header>
+         Decrease the Hello Times
+        </button>
+      </span>
     </div>
   );
 }
